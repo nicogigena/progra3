@@ -1,0 +1,15 @@
+.character-card{
+    width:23%;
+    background-color: white;
+    padding:1%;
+    margin:1%;
+}
+
+.character-card img{
+    width:100%;
+}
+
+h4{
+    text-align:center;
+    margin: 10px;
+}
