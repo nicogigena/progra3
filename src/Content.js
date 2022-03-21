@@ -60,7 +60,7 @@ function Content(){
         },       
     ];
     
-
+    
     return(
         <div className="container-fluid">
 
@@ -71,7 +71,7 @@ function Content(){
 
         {/* <!-- Content Row --> */}
         <div className="row">
-            {contentStats.map((item,i) => <ContentStat name={item.name} border={item.border} value={item.value} icon={item.icon} key={item + i}/>)}
+            {contentStats.map((item,i) => <ContentStat data={item} key={item + i}/>)}
         </div>
 
         {/* <!-- Content Row --> */}
@@ -84,7 +84,7 @@ function Content(){
         </div>
             <h3 className="b s">Personajes de Peliculas</h3>
         <div className="d-flex characters">
-        {heroes.map( (obj, i) => <Card name={obj.name} img={obj.img} description={obj.description} extra={obj.extra} key={obj + i} />)}
+        {heroes.map( (obj, i) => <Card data={obj} key={obj + i} />)}
         
 
         </div>

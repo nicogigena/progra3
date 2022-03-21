@@ -25,11 +25,11 @@ class CharacterItem extends Component {
 
     render(){
         return(
-            <div className={"character-card" + (this.state.activeDiv ? " active": "")}>
-                <img src={"/images/characters/" +this.props.img} alt="hero" onDoubleClick={()=>this.activeDiv()}/>
-                <h4>{this.props.name}</h4>
-                <p className="">{this.props.description}</p>
-                <p className={this.state.hidden ? "d-none" : ""}>{this.props.extra}</p>
+            <div className={`character-card` + (this.state.activeDiv ? " active": "")}>
+                <img src={`/images/characters/${this.props.data.img}`} alt="hero" onDoubleClick={()=>this.activeDiv()}/>
+                <h4>{this.props.data.name}</h4>
+                <p className="">{this.props.data.description}</p>
+                <p className={this.state.hidden ? "d-none" : ""}>Universo: {this.props.data.extra}</p>
                 <a onClick={(event)=>this.hideToggle(event)} href="#">{this.state.hidden ? "Ver más" : "Ver menos"}</a>
             </div>
         )
