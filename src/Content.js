@@ -2,7 +2,7 @@ import React from 'react';
 import ContentStat from "./components/ContentStat/ContentStat"
 import LastItemDiv from "./components/LastItemDiv/LastItemDiv"
 import BatteryList from "./components/BatteryList/BatteryList"
-import CharacterItem from './components/CharacterItem/CharacterItem';
+import Card from './components/CharacterItem/CharacterItem';
 import "./ContentStyle.css"
 
 
@@ -27,21 +27,39 @@ function Content(){
             icon: "user-check"
         }
     ]
-
-    // Heroes
-    let characterName = ["ahsoka", "anakin", "batman", "capAmerica", "cell", "hulkSmall", "kyloRen", "luke", "obiWan", "strange", "superman", "vegetta", "yoda"]
-    let characters = []
-    function capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-      }
+    let heroes =  [
+        {
+            img: 'ahsoka.jpg',
+            name: 'Ashoka',
+            description: 'Character description Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis suscipit voluptatem corporis vitae, eius, alias, omnis exercitationem odit officia nemo molestiae.',
+            extra: 'StarWars',
+        }, 
+        {
+            img: 'anakin.jpg',
+            name: 'Anakin',
+            description: 'Character description Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis suscipit voluptatem corporis vitae, eius, alias, omnis exercitationem odit officia nemo molestiae.',
+            extra: 'StarWars',
+        },
+        {
+            img: 'batman.jpg',
+            name: 'Batman',
+            description: 'Character description Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis suscipit voluptatem corporis vitae, eius, alias, omnis exercitationem odit officia nemo molestiae.',
+            extra: 'DC Comics',
+        },
+        {
+            img: 'hulkSmall.jpg',
+            name: 'Hulk',
+            description: 'Character description Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis suscipit voluptatem corporis vitae, eius, alias, omnis exercitationem odit officia nemo molestiae.',
+            extra: 'Marvel',
+        },
+        {
+            img: 'kyloRen.jpg',
+            name: 'Kylo Ren',
+            description: 'Character description Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis suscipit voluptatem corporis vitae, eius, alias, omnis exercitationem odit officia nemo molestiae.',
+            extra: 'StarWars',
+        },       
+    ];
     
-    for (let i = 0; i < characterName.length; i++) {
-        let characterImage = "images/characters/" + characterName[i] + ".jpg"
-        characters.push({})
-        characters[i].image=characterImage
-        characters[i].name=capitalizeFirstLetter(characterName[i])
-    }
-    //console.log(characters);
 
     return(
         <div className="container-fluid">
@@ -66,7 +84,8 @@ function Content(){
         </div>
             <h3 className="b s">Personajes de Peliculas</h3>
         <div className="d-flex characters">
-            {characters.map((item, i) => <CharacterItem name={item.name} img={item.image} key={item + i}/>)}
+        {heroes.map( (obj) => <Card name={obj.name} img={obj.img} description={obj.description}/>)}
+        
 
         </div>
     </div>

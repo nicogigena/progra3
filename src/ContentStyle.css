@@ -3,3 +3,19 @@
     flex-wrap: wrap;
     justify-content: space-around;
 }
+
+.character-card p.charHidden{
+    height: 10vh;
+    overflow: hidden;
+    font-size: small;
+  }
+
+.character-card p.charUnhidden{
+height: 20vh;
+overflow: hidden;
+font-size: small;
+}
+
+div.characters div.active{
+    background-color: blue;
+}

@@ -1,16 +1,38 @@
-import React from 'react';
+import React, {Component} from 'react';
 import "./style.css"
 
-function CharacterItem(props){
-    
-    return(
-        <div className="character-card">
-            <img src={props.img} alt="hero" />
-            <h4>{props.name}</h4>
-            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-            <a href=":o">Ver más</a>
-        </div>
-    )
+class CharacterItem extends Component {
+    constructor(props){
+        super(props)
+        this.state={
+            hidden: true,
+            activeDiv: false,
+        }
+    }
+
+    hideToggle(event){
+        event.preventDefault()
+        this.state.hidden ? this.setState({hidden:false}) : this.setState({hidden:true})
+    }
+    activeDiv(){
+        if (this.state.activeDiv) {
+            this.setState({activeDiv:false})
+        } else {
+            this.setState({activeDiv:true})
+        }
+       /*this.state.active ? this.setState({activeDiv:false}) : this.setState({activeDiv:true}) */
+    }
+
+    render(){
+        return(
+            <div className={"character-card" + (this.state.activeDiv ? " active": "")}>
+                <img src={"/images/characters/" +this.props.img} alt="hero" onDoubleClick={()=>this.activeDiv()}/>
+                <h4>{this.props.name}</h4>
+                <p className={this.state.hidden ? "charHidden" : "charUnhidden"}>{this.props.description}</p>
+                <a onClick={(event)=>this.hideToggle(event)} href="#">{this.state.hidden ? "Ver más" : "Ver menos"}</a>
+            </div>
+        )
+    }
 }
 
 export default CharacterItem
