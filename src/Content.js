@@ -1,95 +1,62 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ContentStat from "./components/ContentStat/ContentStat"
 import LastItemDiv from "./components/LastItemDiv/LastItemDiv"
 import BatteryList from "./components/BatteryList/BatteryList"
-import Card from './components/CharacterItem/CharacterItem';
+import CharactersRyM from './components/CharactersRyM/CharactersRyM';
 import "./ContentStyle.css"
 
 
-function Content(){
-
-    //Gráficos requeridos
-    let contentStats = [
-        {
-            name: "Products in DataBase",
-            border: "primary",
-            value: "135",
-            icon: "clipboard-list"
-        },        {
-            name: "Amount in products",
-            border: "success",
-            value: "$546.456",
-            icon: "dollar-sign"
-        },        {
-            name: "Users quantity",
-            border: "warning",
-            value: "38",
-            icon: "user-check"
+class Content extends Component{
+    constructor(props){
+        super(props);
+        this.state={
+            value:'',
+            contentStats : [
+                {
+                    name: "Products in DataBase",
+                    border: "primary",
+                    value: "135",
+                    icon: "clipboard-list"
+                },        {
+                    name: "Amount in products",
+                    border: "success",
+                    value: "$546.456",
+                    icon: "dollar-sign"
+                },        {
+                    name: "Users quantity",
+                    border: "warning",
+                    value: "38",
+                    icon: "user-check"
+                }
+            ]
         }
-    ]
-    let heroes =  [
-        {
-            img: 'ahsoka.jpg',
-            name: 'Ashoka',
-            description: 'Character description Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis suscipit voluptatem corporis vitae, eius, alias, omnis exercitationem odit officia nemo molestiae.',
-            extra: 'StarWars',
-        }, 
-        {
-            img: 'anakin.jpg',
-            name: 'Anakin',
-            description: 'Character description Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis suscipit voluptatem corporis vitae, eius, alias, omnis exercitationem odit officia nemo molestiae.',
-            extra: 'StarWars',
-        },
-        {
-            img: 'batman.jpg',
-            name: 'Batman',
-            description: 'Character description Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis suscipit voluptatem corporis vitae, eius, alias, omnis exercitationem odit officia nemo molestiae.',
-            extra: 'DC Comics',
-        },
-        {
-            img: 'hulkSmall.jpg',
-            name: 'Hulk',
-            description: 'Character description Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis suscipit voluptatem corporis vitae, eius, alias, omnis exercitationem odit officia nemo molestiae.',
-            extra: 'Marvel',
-        },
-        {
-            img: 'kyloRen.jpg',
-            name: 'Kylo Ren',
-            description: 'Character description Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis suscipit voluptatem corporis vitae, eius, alias, omnis exercitationem odit officia nemo molestiae.',
-            extra: 'StarWars',
-        },       
-    ];
+    }
+
+    render(){
+        return(
+            <div className="container-fluid">
     
+            {/* <!-- Page Heading --> */}
+            <div className="d-sm-flex align-items-center justify-content-between mb-4">
+                <h1 className="h3 mb-0 text-gray-800">App Dashboard</h1>
+            </div>
     
-    return(
-        <div className="container-fluid">
-
-        {/* <!-- Page Heading --> */}
-        <div className="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 className="h3 mb-0 text-gray-800">App Dashboard</h1>
+            {/* <!-- Content Row --> */}
+            <div className="row">
+                {this.state.contentStats.map((item,i) => <ContentStat data={item} key={item + i}/>)}
+            </div>
+    
+            {/* <!-- Content Row --> */}
+            <div className="row">            
+                <LastItemDiv img="images/product_dummy.svg" />
+                <BatteryList />
+            </div>    
+            <h3 className="h3"> Rick and Morty</h3>
+            <CharactersRyM />
         </div>
-
-        {/* <!-- Content Row --> */}
-        <div className="row">
-            {contentStats.map((item,i) => <ContentStat data={item} key={item + i}/>)}
-        </div>
-
-        {/* <!-- Content Row --> */}
-        <div className="row">
-            {/* <!-- Last Product in DB --> */}
-            <LastItemDiv img="images/product_dummy.svg" />
-
-            {/* <!-- Categories in DB --> */}
-            <BatteryList />
-        </div>
-            <h3 className="b s">Personajes de Peliculas</h3>
-        <div className="d-flex characters">
-        {heroes.map( (obj, i) => <Card data={obj} key={obj + i} />)}
-        
-
-        </div>
-    </div>
-    )
+        )
+    }
 }
+
 
 export default Content

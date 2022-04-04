@@ -1,5 +1,4 @@
 import React from 'react';
-import SideNavItem from "./../SideNavItem/SideNavItem"
 
 function SideBar(){
 	let sideNavItem = [
@@ -28,11 +27,20 @@ function SideBar(){
 				<div className="sidebar-brand-text mx-3">Admin</div>
 			</a>
 			<hr className="sidebar-divider my-0" />
-            <SideNavItem
-                icon="tachometer-alt" name="Dashboard" active="active" />
+				<li className={"nav-item " + "active"}>
+					<a className="nav-link" href="/">
+						<i className={"fas fa-fw fa-" + "tachometer-alt"}></i>
+						<span>{"Dashboard"}</span></a>
+				</li>
 			<hr className="sidebar-divider" />
 			<div className="sidebar-heading">Actions</div>
-            {sideNavItem.map((item, i) => <SideNavItem icon={item.icon} name={item.name} active={item.active ? "active" : ""} key={item + i}/>)}
+            {sideNavItem.map((item, i) => 
+				<li className={"nav-item " + item.active}>
+					<a className="nav-link" href="/">
+						<i className={"fas fa-fw fa-" + item.icon}></i>
+						<span>{item.name}</span></a>
+				</li>
+			)}
 			<hr className="sidebar-divider d-none d-md-block" />
 		</ul>
     )
